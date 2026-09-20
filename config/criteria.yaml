@@ -1,0 +1,151 @@
+# =====================================================================
+# Flat-hunt criteria. This is the ONE file you edit as your search evolves.
+# Everything below is matched case-insensitively against each post's text.
+# =====================================================================
+
+search:
+  # Only posts scored at or above this threshold are emailed to you.
+  # Lower it (e.g. 2) to see more, raise it (e.g. 4) to see only strong hits.
+  min_score: 3
+
+  # Ignore posts older than this many hours. Keeps the digest fresh and
+  # avoids re-surfacing stale listings.
+  max_age_hours: 240
+
+budget:
+  # Rent per month, in INR. A room/flat priced above this is dropped.
+  # If a post gives a per-head figure, that per-head number is what we test.
+  max_rent: 40000
+  # A little headroom so a "42k, negotiable" post is not silently discarded.
+  # Posts between max_rent and (max_rent * tolerance) are kept but flagged.
+  tolerance: 1.10
+
+gender:
+  # We want listings open to males. Posts that explicitly say
+  # female-/girls-only are excluded outright.
+  want: male
+  exclude_terms:
+    - "female only"
+    - "females only"
+    - "girls only"
+    - "ladies only"
+    - "only girls"
+    - "only females"
+    - "for girls"
+    - "spinster"
+  positive_terms:
+    - "male"
+    - "males"
+    - "boys"
+    - "bachelor"
+    - "bachelors"
+    - "gents"
+    - "guys"
+    - "any gender"
+    - "male/female"
+    - "male / female"
+
+room:
+  # Signals that a single room is going in a shared 2/3/4 BHK (what you want),
+  # rather than a whole flat or a PG bed.
+  positive_terms:
+    - "1 room"
+    - "one room"
+    - "single room"
+    - "room available"
+    - "room vacant"
+    - "spare room"
+    - "flatmate"
+    - "flat mate"
+    - "roommate"
+    - "room mate"
+    - "looking for a flatmate"
+    - "one vacancy"
+    - "1 vacancy"
+    - "sharing"
+    - "2bhk"
+    - "3bhk"
+    - "4bhk"
+    - "2 bhk"
+    - "3 bhk"
+    - "4 bhk"
+  # Things you do NOT want. A hit here is a strong negative signal.
+  exclude_terms:
+    - "pg "
+    - "paying guest"
+    - "1bhk"
+    - "1 bhk"
+    - "studio"
+    - "wanted"          # "flat wanted" = someone seeking, not offering
+    - "looking for flat"
+    - "looking for a room" # a seeker, not a provider
+
+location:
+  # Neighbourhoods and societies within ~0-3 km of RMZ Ecoworld, Bellandur.
+  # EDIT FREELY: add every society name you come across, remove far ones.
+  # A hit here is required-ish: posts with zero location match score low.
+  societies:
+    - "adarsh palm retreat"
+    - "apr"
+    - "vars parkwood"
+    - "sattva senorita"
+    - "salarpuria senorita"
+    - "prestige jade pavilion"
+    - "sobha silicon oasis"
+    - "purva parkridge"
+    - "central park bellandur"
+    - "sobha marvella"
+    - "vaswani reserve"
+    - "divyasree 77"
+    - "prestige ferns"
+    - "mantri lithos"
+    - "rohan jharoka"
+    - "gm infinite"
+  neighbourhoods:
+    - "bellandur"
+    - "ecoworld"
+    - "eco world"
+    - "rmz"
+    - "devarabisanahalli"
+    - "devarabeesanahalli"
+    - "kadubeesanahalli"
+    - "kariyammana agrahara"
+    - "kaikondrahalli"
+    - "green glen layout"
+    - "panathur"
+    - "ibblur"
+    - "haralur"
+    - "harlur"
+    - "yemalur"
+    - "doddakannelli"
+    - "sarjapur road"
+    - "marathahalli"   # edge, keep if you like the ORR side
+
+# Facebook groups/pages to read. Paste the URL of each group you are in.
+# The tool opens each, scrolls, and collects recent posts.
+# Find the URL by opening the group in a browser and copying the address bar.
+facebook:
+  groups:
+    - name: "Example - replace me"
+      url: "https://www.facebook.com/groups/000000000000000"
+    # - name: "Bangalore Flats and Flatmates"
+    #   url: "https://www.facebook.com/groups/XXXXXXXXXXXX"
+  # How many times to scroll each group (more = older posts, slower run).
+  scroll_rounds: 6
+  # Optional keywords typed into each group's search box before scrolling.
+  # Leave empty to just read the recent feed.
+  search_terms:
+    - "bellandur flatmate"
+    - "ecoworld room"
+
+# Extra rent-related words that, combined with the above, boost confidence
+# a post is an actual rental listing (not chatter).
+rent_signal_terms:
+  - "rent"
+  - "deposit"
+  - "per month"
+  - "/month"
+  - "pm"
+  - "available from"
+  - "move in"
+  - "immediate"

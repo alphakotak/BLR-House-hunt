@@ -1,0 +1,13 @@
+# secrets & session — never commit these
+data/fb_state.json
+.env
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# local seen-store when testing (the workflow uses its own cached copy)
+data/seen.json
